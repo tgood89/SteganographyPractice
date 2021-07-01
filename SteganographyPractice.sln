@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "SteganographyPractice", "SteganographyPractice.pyproj", "{CB12A874-8E74-4D13-8023-C8B27E960B88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB12A874-8E74-4D13-8023-C8B27E960B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB12A874-8E74-4D13-8023-C8B27E960B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4AD00DEB-F6EA-473A-84C4-BC19D5156DA9}
+	EndGlobalSection
+EndGlobal
