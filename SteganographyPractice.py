@@ -1,17 +1,15 @@
 import cv2
 import numpy
 from pathlib import Path
+from PIL import Image
 
 #Encode
 #Translates secret message into unicode numbers
-secret_message = "Hola Amigos and Amigas"
 def char_generator(secret_message):
     for c in secret_message:
         yield ord(c)
 
 #Gets Image and converts to a matrix
-#image_location = Path("C:/Users/tsgoo/source/repos/school/SteganographyPractice/Stevie.jpg")
-image_location = "Stevie.jpg"
 def get_image(image_location):
     img = cv2.imread(image_location)
     return img
@@ -20,8 +18,10 @@ def get_image(image_location):
 def getGCD(x,y):
     while(y):
         x,y=y,x%y
+
     return x
 
+#Hides secret message in image
 def encode_image(image_location, msg):
   img = get_image(image_location)
   msg_gen = char_generator(msg)
@@ -35,10 +35,7 @@ def encode_image(image_location, msg):
           img[i-1][j-1][0] = 0
           return img
 
-encoded_image = encode_image(image_location, secret_message)
-cv2.imwrite ("EncodedImage.png", encoded_image)
-print("Works")
-
+#Decodes secret message from image
 def decode_image(img_loc):
   img = get_image(img_loc)
   pattern = getGCD(len(img), len(img[0]))
@@ -51,11 +48,16 @@ def decode_image(img_loc):
         else:
           return message
 
+#Gets the RGB array data of an image
+def getPixels(filename):
+    img = Image.open(filename, 'r')
+    w, h = img.size
+    pix = list(img.getdata())
+    return [pix[n:n+w] for n in range(0, w*h, w)]
 
-
-
-
-
-
-
-
+#Compares RGB array data of two images to check for alteration
+def imageCompare(known_original, file_to_compare):
+    if(getPixels(known_original) == getPixels(file_to_compare)):
+       print("File has not been altered.")
+    else:
+        print("File has been altered.")
